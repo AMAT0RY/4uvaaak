@@ -1,7 +1,7 @@
 const tgWebApp = window.Telegram.WebApp;
 const initData = tgWebApp.initData;
  
-fetch('https://185.84.162.89:443/user/login', {
+fetch('https://api.vrkids.ru:443/user/login', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
