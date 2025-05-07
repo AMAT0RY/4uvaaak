@@ -4,6 +4,7 @@ const initData = tgWebApp.initData;
 fetch('https://api.vrkids.ru:443/user/login', {
   method: 'POST',
   headers: {
+    'Credentials': 'include',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
