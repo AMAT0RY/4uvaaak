@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram cs</title>
+    <title>Sohri - Сохранённые картинки</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="config.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <h1 id="Isauth">NoAuth</h1>
-    <h2 id="username">@username</h2>
+    <div class="container">
+        <!-- Навигация -->
+        <nav class="nav">
+            <button class="nav-btn active" data-page="my">Мои</button>
+            <button class="nav-btn" data-page="feed">Лента</button>
+            <button class="nav-btn" data-page="search">Поиск</button>
+            <button class="nav-btn" data-page="subscriptions">Подписки</button>
+        </nav>
 
-    
-    <script src="index.js"></script>
+        <!-- Страница "Мои" -->
+        <div id="page-my" class="page active">
+            <h2>Мои сохранёнки</h2>
+            <div id="my-images" class="images-grid"></div>
+            <div id="my-loading" class="loading">Загрузка...</div>
+        </div>
+
+        <!-- Страница "Лента" -->
+        <div id="page-feed" class="page">
+            <h2>Лента</h2>
+            <div id="feed-images" class="images-grid"></div>
+            <div id="feed-loading" class="loading">Загрузка...</div>
+        </div>
+
+        <!-- Страница "Поиск" -->
+        <div id="page-search" class="page">
+            <h2>Поиск</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Введите username..." class="search-input">
+                <button id="search-btn" class="search-btn">Найти</button>
+            </div>
+            <div id="search-history" class="search-history"></div>
+            <div id="search-results" class="search-results"></div>
+            <div id="user-profile" class="user-profile" style="display: none;">
+                <div class="user-info">
+                    <h3 id="profile-username"></h3>
+                    <p id="profile-name"></p>
+                    <button id="subscribe-btn" class="subscribe-btn">Подписаться</button>
+                </div>
+                <div id="user-images" class="images-grid"></div>
+            </div>
+        </div>
+
+        <!-- Страница "Подписки" -->
+        <div id="page-subscriptions" class="page">
+            <h2>Мои подписки</h2>
+            <div id="subscriptions-list" class="subscriptions-list"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра изображения -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="">
+            <div class="modal-info">
+                <p id="modal-caption"></p>
+                <div class="modal-actions">
+                    <button id="like-btn" class="like-btn">
+                        <span id="like-icon">❤️</span>
+                        <span id="like-count">0</span>
+                    </button>
+                    <button id="comment-btn" class="comment-btn">💬 Комментарии</button>
+                </div>
+                <div id="comments-section" class="comments-section">
+                    <h4>Комментарии</h4>
+                    <div id="comments-list"></div>
+                    <div class="comment-input-container">
+                        <input type="text" id="comment-input" placeholder="Написать комментарий..." class="comment-input">
+                        <button id="send-comment-btn" class="send-comment-btn">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
+
